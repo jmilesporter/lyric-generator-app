@@ -48,16 +48,16 @@
 
 	$: lyricPrompt = '';
 	if (genre) {
-	$: lyricPrompt = `${genre} lyrics `;
+	lyricPrompt = `${genre} lyrics `;
 	}
 	if (subject) {
-	$: lyricPrompt = lyricPrompt.concat(` on the subject of ${subject}`)
+	lyricPrompt = lyricPrompt.concat(` on the subject of ${subject}`)
 	}
 	if (artist) {
-	$: lyricPrompt = lyricPrompt.concat(` in the style of ${artist}`)
+	lyricPrompt = lyricPrompt.concat(` in the style of ${artist}`)
 	}
 	if (songTitle) {
-	$: lyricPrompt = lyricPrompt.concat(` called ${songTitle}`)
+	lyricPrompt = lyricPrompt.concat(` called ${songTitle}`)
 	}
 
 </script>
