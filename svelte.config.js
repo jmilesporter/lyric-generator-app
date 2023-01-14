@@ -10,7 +10,11 @@ const config = {
 	],
 	kit: {
 		adapter: adapter()
-	}
+	},
+	build: {
+        format: 'node',
+        sourceMap: true
+    },
 };
 
 export default config;
