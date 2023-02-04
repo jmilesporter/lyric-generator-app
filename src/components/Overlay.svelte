@@ -1,8 +1,6 @@
 <script>
-	import { isOverlayOpen } from '../stores/OverlayStore.js';
+	import { isOverlayOpen, lyrics, loading } from '../stores/OverlayStore.js';
 	import { fade } from 'svelte/transition';
-	import { lyrics } from '../stores/OverlayStore.js';
-	import { loading } from '../stores/OverlayStore.js';
 
 	function copyText() {
 		/* Copy selected text into clipboard */
@@ -14,6 +12,10 @@
 		setTimeout(() => {
 			document.getElementById('lyrics').classList.remove('text-emerald-500');
 		}, 1000);
+	}
+	function closeModal() {
+		isOverlayOpen.set(false);
+		$lyrics = '';
 	}
 </script>
 
@@ -47,7 +49,7 @@
 	{/if}
 	{#if !$loading}
 		<div
-			class="fade-in bg-white text-black rounded-xl px-40 py-16 h-screen overflow-scroll relative "
+			class="fade-in bg-white text-black rounded-xl xs:px-8 xs:py-4 full:px-40 full:py-16 h-screen overflow-scroll relative "
 			on:click|stopPropagation
 		>
 			<i
@@ -59,7 +61,14 @@
 				}}
 			/>
 
-			<span class="lyrics">{$lyrics}</span>
+			<i
+				id="lyrics"
+				class="fa-regular fa-square-xmark close-button text-gray-400 opacity-30 hover:opacity-100 m-4 fa-2x transition ease-in-out duration-300 delay-100 "
+				on:click={() => {
+					closeModal();
+				}}
+			/>
+			<span  class="lyrics">{$lyrics}</span>
 
 			<slot />
 		</div>
@@ -71,6 +80,12 @@
 		position: absolute;
 		top: 0;
 		right: 0;
+		cursor: pointer;
+	}
+	.close-button {
+		position: absolute;
+		top: 0;
+		left: 0;
 		cursor: pointer;
 	}
 	.lyrics {
