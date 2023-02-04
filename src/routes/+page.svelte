@@ -1,7 +1,5 @@
 <script>
-	import { isOverlayOpen } from '../stores/OverlayStore.js';
-	import { lyrics } from '../stores/OverlayStore.js';
-	import { loading } from '../stores/OverlayStore.js';
+	import { isOverlayOpen, lyrics, loading } from '../stores/OverlayStore.js';
 
 	export let data;
 	const apiKey = data.key;
@@ -12,7 +10,7 @@
 		if (genre) {
 			lyricPrompt = `${genre} `;
 		}
-			lyricPrompt = `lyrics`
+			lyricPrompt =  `lyrics`
 		if (subject) {
 			lyricPrompt = lyricPrompt.concat(` on the subject of ${subject}`)
 		}
@@ -67,7 +65,6 @@
 	$: genre = '';
 	$: artist = '';
 	$: songTitle = '';
-
 	$: lyricPrompt = '';
 
 </script>
@@ -75,26 +72,26 @@
 <div class="grid place-items-center bg-slate-500 h-screen ">
 	<input
 		placeholder="s u b j e c t ( s )"
-		class="absolute top-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
+		class="absolute xs:top-0 full:top-0 full:top-none placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
 		bind:value={subject}
 	/>
 	<input
 	placeholder="g e n r e ( s )"
-	class="absolute right-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
+	class="absolute xs:top-24 full:right-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
 	bind:value={genre}
 	/>
 	<input
 		placeholder="a r t i s t ( s )"
-		class="absolute bottom-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700  p-8 w-72 shadow-xl rounded-3xl text-gray-200 hover:-translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
+		class="absolute xs:top-48 full:bottom-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700  p-8 w-72 shadow-xl rounded-3xl text-gray-200 hover:-translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
 		bind:value={artist}
 	/>
 	<input
 	placeholder="s o n g   t i t l e"
-	class="absolute left-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
+	class="absolute xs:top-72 full:left-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
 	bind:value={songTitle}
 	/>
 	<!-- <div class="absolute bottom-60 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white "> -->
-	<div class="absolute bottom-60 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-2 w-60 shadow-xl rounded-3xl text-white ">
+	<div class="absolute xs:bottom-12 full:bottom-60 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-2 w-60 shadow-xl rounded-3xl text-white ">
 			<div>p r e d i c t a b i l i t y</div>
 			<label>
 				<input class="hover:translate-x-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300 accent-[#fb8200]" type=range bind:value={rangeValue} min=0 max=150>
@@ -103,7 +100,7 @@
 
 	<button
 		id="generate"
-		class="bg-slate-900  p-8 w-72 shadow-xl rounded-3xl text-gray-200 hover:-translate-y-1 hover:scale-110 hover:bg-slate-800 hover: transition ease-in-out duration-500 delay-300  "
+		class=" absolute bg-slate-900 xs:top-96  p-8 w-72 shadow-xl rounded-3xl text-gray-200 hover:-translate-y-1 hover:scale-110 hover:bg-slate-800 hover: transition ease-in-out duration-500 delay-300  "
 		on:click={() => {
 			onClick();
 		}}>g e n e r a t e &nbsp; l y r i c s</button
