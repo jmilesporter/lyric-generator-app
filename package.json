@@ -4,7 +4,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"start": "node build/index.js",
+		"starts": "node build/index.js",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
 		"lint": "prettier --check --plugin-search-dir=. .",
