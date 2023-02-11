@@ -3,30 +3,43 @@
 
 	export let data;
 	const apiKey = data.key;
-	let rangeValue = 70
-
+	let rangeValue = 70;
 
 	function formatPayload() {
 		if (genre) {
 			lyricPrompt = `${genre} `;
 		}
-			lyricPrompt =  `lyrics`
+		lyricPrompt = `lyrics`;
 		if (subject) {
-			lyricPrompt = lyricPrompt.concat(` on the subject of ${subject}`)
+			lyricPrompt = lyricPrompt.concat(` on the subject of ${subject}`);
 		}
 		if (artist) {
-			lyricPrompt = lyricPrompt.concat(` in the style of ${artist}`)
+			lyricPrompt = lyricPrompt.concat(` in the style of ${artist}`);
 		}
-		if (songTitle) {
-			lyricPrompt = lyricPrompt.concat(` of a song named ${songTitle}`)
-		}
+		// if (songTitle) {
+		// 	lyricPrompt = lyricPrompt.concat(` of a song named ${songTitle}`);
+		// }
 		if (lyricPrompt === 'lyrics') {
 			lyricPrompt = 'lyrics on any subject in any style';
 		}
 	}
 
+	let hasBeenClicked = false;
+
+	function preventMultiClick() {
+		if (hasBeenClicked) return;
+
+		hasBeenClicked = true;
+		setTimeout(() => {
+			hasBeenClicked = false;
+		}, 3000);
+
+		// console.log('click');
+	}
 
 	async function onClick() {
+		preventMultiClick();
+
 		$lyrics = '';
 		isOverlayOpen.set(true);
 		formatPayload();
@@ -41,7 +54,7 @@
 				body: JSON.stringify({
 					model: 'text-davinci-003',
 					prompt: lyricPrompt,
-					temperature: (150 - rangeValue)/100,
+					temperature: (150 - rangeValue) / 100,
 					max_tokens: 4000
 				})
 			});
@@ -64,9 +77,8 @@
 	$: subject = '';
 	$: genre = '';
 	$: artist = '';
-	$: songTitle = '';
+	// $: songTitle = '';
 	$: lyricPrompt = '';
-
 </script>
 
 <div class="grid place-items-center bg-slate-500 h-screen ">
@@ -76,26 +88,34 @@
 		bind:value={subject}
 	/>
 	<input
-	placeholder="g e n r e ( s )"
-	class="absolute xs:top-24 full:right-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
-	bind:value={genre}
+		placeholder="g e n r e ( s )"
+		class="absolute xs:top-24 full:right-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:-translate-x-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
+		bind:value={genre}
 	/>
 	<input
 		placeholder="a r t i s t ( s )"
-		class="absolute xs:top-48 full:bottom-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700  p-8 w-72 shadow-xl rounded-3xl text-gray-200 hover:-translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
+		class="absolute xs:top-48 full:left-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700  p-8 w-72 shadow-xl rounded-3xl text-gray-200 hover:translate-x-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
 		bind:value={artist}
 	/>
-	<input
-	placeholder="s o n g   t i t l e"
-	class="absolute xs:top-72 full:left-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
-	bind:value={songTitle}
-	/>
+	<!-- <input
+		placeholder="s o n g   t i t l e"
+		class="absolute xs:top-72 full:left-0 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white hover:translate-y-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300  "
+		bind:value={songTitle}
+	/> -->
 	<!-- <div class="absolute bottom-60 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-8 w-72 shadow-xl rounded-3xl text-white "> -->
-	<div class="absolute xs:bottom-12 full:bottom-60 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-2 w-60 shadow-xl rounded-3xl text-white ">
-			<div>p r e d i c t a b i l i t y</div>
-			<label>
-				<input class="hover:translate-x-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300 accent-[#fb8200]" type=range bind:value={rangeValue} min=0 max=150>
-			</label>
+	<div
+		class="absolute xs:bottom-12 full:bottom-60 placeholder-white focus:placeholder-transparent text-center bg-slate-700 p-2 w-60 shadow-xl rounded-3xl text-white "
+	>
+		<div>p r e d i c t a b i l i t y</div>
+		<label>
+			<input
+				class="hover:translate-x-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-300 accent-[#fb8200]"
+				type="range"
+				bind:value={rangeValue}
+				min="0"
+				max="150"
+			/>
+		</label>
 	</div>
 
 	<button
@@ -106,6 +126,7 @@
 		}}>g e n e r a t e &nbsp; l y r i c s</button
 	>
 </div>
+
 <style>
 	select {
 		appearance: none;
