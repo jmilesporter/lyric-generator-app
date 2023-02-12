@@ -88,7 +88,7 @@
 	$: lyricPrompt = '';
 </script>
 
-<div class="grid place-items-center bg-slate-900 h-screen ">
+<div class="relative grid place-items-center bg-slate-900 h-screen w-full ">
 	<button
 		class="absolute full:top-4 full:right-4 xs:bottom-48 placeholder-white focus:placeholder-transparent text-center bg-slate-700 w-12 h-12 shadow-xl rounded-full text-gray-200 hover:-translate-x-1 hover:scale-110 hover:bg-slate-600 hover: transition ease-in-out duration-500 delay-400  "
 		on:click={() => {
