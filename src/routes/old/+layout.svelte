@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
-	import { isOverlayOpen } from '../stores/OverlayStore.js';
-	import Overlay from '../components/Overlay.svelte';
+	import { isOverlayOpen } from '../../stores/OverlayStore.js';
+	import Overlay from '../../components/Overlay.svelte';
 </script>
 
 <head
