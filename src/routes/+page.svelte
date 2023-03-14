@@ -33,7 +33,7 @@
       <ol>
         <li>Choose a genre that has lyrics, like 60's pop or psychedelic folk.</li>
         <li>Enter a subject for your song. This can be a single word or a whole line!</li>
-        <li>Choose an artist you want the lyrics to sound like. Be creative! What would a New Wave version of Kendrick Lamar sound like? A Shakespearean version of Nirvana?</li>
+        <li>Choose an artist you want the lyrics to sound like. Be creative! What would a New Wave version of Kendrick Lamar sound like? A reggaeton version of Nirvana?</li>
 
         <li>Click the "Generate Lyrics" button.</li>
         <li>Enjoy your new lyrics!</li>
