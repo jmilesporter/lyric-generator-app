@@ -280,9 +280,7 @@ align-items: flex-start;
 input[type="text"] {
   padding: 0.5rem 2rem 0.5rem 0.5rem;
   border-radius: .5rem;
-  /* border: 1px solid #e5e7eb; */
   background-color: #0f172a;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   transition: all 0.2s ease-in-out;
   width: 100%;
   max-width: 8rem;
@@ -294,6 +292,13 @@ input[type="text"] {
 input::placeholder {
   color: #e5e7eb
 }
+
+input:focus {
+  /* border-color: #e5e7eb; */
+  outline: 1px solid #e5e7eb;
+
+}
+
 input[type="text"]:focus {
   border: 1px solid #e5e7eb;
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
