@@ -37,8 +37,37 @@
         <li>Enjoy your new lyrics!</li>
       </ol>
     </section>
+
+  
+    
+    
   <div class="wrapper">
-    <button>g e n e r a t e &nbsp; l y r i c s</button>
+
+    <div class="input-wrapper-left">
+      <label for="genre-input">Genre:</label>
+      <div class="input-container">
+        <input type="text" id="genre-input" placeholder="Enter your genre...">
+        <span class="input-icon"><i class="fas fa-music"></i></span>
+      </div>
+    </div>
+    
+    <div class="input-wrapper-center">
+      <label for="subject-input">Subject:</label>
+      <div class="input-container-top">
+        <span class="input-icon"><i class="fas fa-lightbulb"></i></span>
+        <input type="text" id="subject-input" placeholder="Enter your subject...">
+      </div>
+    </div>
+    
+    <div class="input-wrapper-right">
+      <label for="artist-input">Artist:</label>
+      <div class="input-container-right">
+        <input type="text" id="artist-input" placeholder="Enter your artist...">
+        <span class="input-icon"><i class="fas fa-user"></i></span>
+      </div>
+    </div>
+    
+    <button class="generator-btn">g e n e r a t e &nbsp; l y r i c s</button>
   </div>
 
     <div class="ads">
@@ -117,9 +146,10 @@
 
 }   
 .wrapper {
+  position:relative;
 display:flex;
 justify-content: center; 
-align-items: flex-end;
+align-items: flex-start;
   margin: 1rem;
   padding: 1rem;
   border: 1px solid #ccc;
@@ -127,17 +157,7 @@ align-items: flex-end;
   max-width: 800px;
   height: 400px;
 }
-button {
-      background-color: #fb8200;
-      padding: 2rem;
-      width: 16rem;
-      max-width: 18rem;
-      max-height: 5rem;
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-      border-radius: 1.5rem;
-      color:#0f172a;
 
-}
 
     .ads {
       display: flex;
@@ -231,6 +251,103 @@ button {
   margin-top: 0.5rem;
   margin-bottom: 0;
 }
+/* Input styling */
+.input-wrapper-center {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: absolute;
+}
+.input-wrapper-left {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: absolute;
+  left: 0%
+}
+.input-wrapper-right {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: absolute;
+  right: 0%
+}
+
+.input-container {
+  position: relative;
+}
+
+input[type="text"] {
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  border-radius: .5rem;
+  /* border: 1px solid #e5e7eb; */
+  background-color: #0f172a;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  max-width: 8rem;
+  margin: 2rem;
+  margin-top: 0rem;
+  top: 0%;
+  left: 0%
+}
+input::placeholder {
+  color: #e5e7eb
+}
+input[type="text"]:focus {
+  border: 1px solid #e5e7eb;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+.input-icon {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #e5e7eb
+}
+
+.input-icon i {
+  font-size: 1rem;
+}
+
+.input-icon:hover {
+  color: #e5e7eb;
+}
+
+/* Button styling */
+.generator-btn {
+  display: inline-block;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  background-color: #fb8200;
+     padding: 2rem;
+      width: 16rem;
+      max-width: 18rem;
+      max-height: 5rem;
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      border-radius: 1.5rem;
+      color:#0f172a;
+}
+
+.generator-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.generator-btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
 
 </style>  
 
