@@ -1,6 +1,6 @@
 <!-- App.svelte -->
 <script>
-	import { lyrics } from '../stores/OverlayStore.js';
+	import { lyrics, loading } from '../stores/OverlayStore.js';
 
 	export let data;
 	const apiKey = data.key;
@@ -45,7 +45,7 @@
 		// isOverlayOpen.set(true);
 		formatPayload();
 		try {
-			// $loading = true;
+			$loading = true;
 			const response = await fetch('https://api.openai.com/v1/completions', {
 				method: 'POST',
 				headers: {
@@ -61,12 +61,12 @@
 			});
 			const data = await response.json();
 
-			// $loading = false;
+			$loading = false;
 
 			$lyrics = data.choices[0].text;
 
 			if (response.status !== 200) {
-				// $loading = false;
+				$loading = false;
 				throw data.error || new Error(`Request failed with status ${response.status}`);
 			}
 		} catch (error) {
@@ -558,6 +558,7 @@
 		font-size: small;
 		outline: none;
 	}
+
 	.predictability-container::placeholder {
 		color: #e5e7eb;
 	}

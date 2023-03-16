@@ -119,12 +119,12 @@
 		background-color: #334155;
 		min-height: 800px;
 	}
+
 	.container {
 		display: flex;
-		flex-direction: column;
+		justify-content: center;
 		align-items: center;
-		text-align: center;
-		max-width: 800px;
-		background-color: #334155;
+		height: 100%;
+		width: 100%;
 	}
 </style>
