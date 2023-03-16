@@ -8,6 +8,17 @@
 			navigate('/');
 		}
 	});
+	let clicked = false;
+	function copyText() {
+		/* Copy selected text into clipboard */
+		navigator.clipboard.writeText($lyrics);
+	}
+	function isClicked() {
+		clicked = true;
+		setTimeout(() => {
+			clicked = false;
+		}, 2000);
+	}
 </script>
 
 <section class="container">
@@ -23,7 +34,22 @@
 		</span>
 	{/if}
 	{#if !$loading}
-		<span class="lyrics">{$lyrics} </span>
+		{#if !clicked}
+			<span class="lyrics">{$lyrics} </span>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<i
+				class="fa-solid fa-copy copy-button "
+				on:click={() => {
+					copyText();
+					isClicked();
+				}}
+			/>
+		{/if}
+		{#if clicked}
+			<span class="lyrics">{$lyrics} </span>
+
+			<i class="fa-solid fa-copy copy-button-2" />
+		{/if}
 	{/if}
 </section>
 
@@ -62,5 +88,41 @@
 	.letter {
 		display: inline-block;
 		animation: loadingBounce 1s infinite;
+	}
+
+	.copy-button {
+		position: absolute;
+		top: 1.5rem;
+		right: 1.5rem;
+		cursor: pointer;
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 400;
+		font-style: regular;
+		font-size: 1.5rem;
+		color: #e5e7eb;
+		opacity: 0.3;
+		transition: opacity 300ms ease-in-out 300ms;
+		margin: 1rem;
+	}
+	.copy-button-2 {
+		position: absolute;
+		top: 1.5rem;
+		right: 1.5rem;
+		cursor: pointer;
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 400;
+		font-style: regular;
+		font-size: 1.5rem;
+		color: #10b981;
+		opacity: 1;
+		transition: opacity 300ms ease-in-out 300ms;
+		margin: 1rem;
+	}
+
+	.copy-button:hover {
+		opacity: 1;
+	}
+	section {
+		position: relative;
 	}
 </style>
