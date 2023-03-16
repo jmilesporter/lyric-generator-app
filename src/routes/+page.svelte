@@ -566,6 +566,7 @@
 		cursor: pointer;
 		/* transform: translateX(0) scale(1); */
 		background-color: #1f2937;
+		accent-color: #fb8200;
 		/* transition: transform 500ms ease-in-out 300ms, background-color 500ms ease-in-out; */
 	}
 
