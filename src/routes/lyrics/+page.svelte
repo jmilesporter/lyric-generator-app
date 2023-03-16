@@ -17,12 +17,24 @@
 		clicked = true;
 		setTimeout(() => {
 			clicked = false;
-		}, 2000);
+		}, 1500);
 	}
 </script>
 
 <section class="container">
 	{#if $loading}
+		<a href="/">
+			<i class="fa-solid fa-arrow-left arrow" />
+		</a>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+
+		<i
+			class="fa-solid fa-copy copy-button"
+			on:click={() => {
+				copyText();
+				isClicked();
+			}}
+		/>
 		<span class="loading">
 			<span class="letter" style="animation-delay: 0s;">l</span>
 			<span class="letter" style="animation-delay: 0.1s;">o</span>
@@ -36,9 +48,12 @@
 	{#if !$loading}
 		{#if !clicked}
 			<span class="lyrics">{$lyrics} </span>
+			<a href="/">
+				<i class="fa-solid fa-arrow-left arrow" />
+			</a>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<i
-				class="fa-solid fa-copy copy-button "
+				class="fa-solid fa-copy copy-button"
 				on:click={() => {
 					copyText();
 					isClicked();
@@ -47,6 +62,7 @@
 		{/if}
 		{#if clicked}
 			<span class="lyrics">{$lyrics} </span>
+			<i class="fa-solid fa-arrow-left arrow" />
 
 			<i class="fa-solid fa-copy copy-button-2" />
 		{/if}
@@ -89,7 +105,20 @@
 		display: inline-block;
 		animation: loadingBounce 1s infinite;
 	}
-
+	.arrow {
+		position: absolute;
+		top: 1.5rem;
+		left: 1.5rem;
+		cursor: pointer;
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 400;
+		font-style: regular;
+		font-size: 1.5rem;
+		color: #e5e7eb;
+		opacity: 0.3;
+		transition: opacity 300ms ease-in-out 300ms;
+		margin: 1rem;
+	}
 	.copy-button {
 		position: absolute;
 		top: 1.5rem;
