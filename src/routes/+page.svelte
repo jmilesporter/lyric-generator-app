@@ -503,8 +503,9 @@
 		border-radius: 1.5rem;
 		color: #0f172a;
 		cursor: pointer;
-		/* transform: translateY(0) scale(1); */
+		transform: translateY(0) scale(1);
 		text-decoration: none;
+		transition: transform 50ms ease-in-out 50ms, background-color 50ms ease-in-out;
 	}
 	.generate-lyrics:hover:active {
 		/* transform: translateY(1px); */
@@ -522,7 +523,7 @@
 	}
 
 	.generate-lyrics:hover {
-		/* transform: translateY(-0.25rem) translateX(0.75rem) scale(1.1); */
+		transform: translateY(-0.25rem) scale(1.1);
 		background-color: #ffa64c;
 	}
 	.submit-feedback {

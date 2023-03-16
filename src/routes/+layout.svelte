@@ -16,9 +16,12 @@
 <header>
 	<div class="header-container">
 		<div class="header-wrapper">
-			<link class="logo" rel="icon" href="%sveltekit.assets%/generatorlogo.png" />
 			<a href="/"> <h1 class="title">Lyric Generator</h1> </a>
-			<p class="subtitle">Lyrics generated with AI</p>
+			<div>
+				<a href="/"><img class="logo" src="/generatorlogo.png" alt="Logo" /></a>
+
+				<p class="subtitle">Lyrics generated with AI</p>
+			</div>
 			<div class="border-container" />
 		</div>
 	</div>
@@ -50,25 +53,31 @@
 		margin: 0 auto;
 		background-color: #334155;
 		padding-bottom: 0;
+		padding-top: 0;
+		position: relative;
 	}
 	.header-wrapper {
 		text-align: center;
 		gap: 10px;
 		position: relative;
+		padding-top: 1rem;
 		/* padding-bottom: 1rem; */
 		/* margin-bottom: 1rem; */
 	}
 	.logo {
 		position: absolute;
-		width: 50px;
-		height: 50px;
+		width: 4rem;
+		height: 4rem;
 		object-fit: contain;
-		left: 5%;
+		left: 8%;
+		bottom: 41%;
+		cursor: pointer;
 	}
 	.title {
 		font-size: 4rem;
 		font-family: Arial, sans-serif;
 		margin: 0;
+		display: inline-block;
 	}
 	.subtitle {
 		font-size: 1.5rem;
