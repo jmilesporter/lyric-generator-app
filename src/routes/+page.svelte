@@ -167,7 +167,7 @@
 			</div>
 
 			<a
-				href="http://localhost:5173/lyrics"
+				href="http://lyricgenerator.com/lyrics"
 				class="generate-lyrics"
 				on:click={() => {
 					generateLyrics();
