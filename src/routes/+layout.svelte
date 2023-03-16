@@ -117,7 +117,7 @@
 		max-width: 800px;
 		margin: 0 auto;
 		background-color: #334155;
-		min-height: 800px;
+		min-height: 1200px;
 	}
 
 	.container {
