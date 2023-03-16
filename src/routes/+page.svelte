@@ -164,7 +164,7 @@
 			</div>
 
 			<a
-				href="lyricgenerator.com/lyrics"
+				href="/lyrics"
 				class="generate-lyrics"
 				on:click={() => {
 					generateLyrics();
