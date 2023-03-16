@@ -17,9 +17,6 @@
 		if (artist) {
 			lyricPrompt = lyricPrompt.concat(` in the style of ${artist}`);
 		}
-		// if (songTitle) {
-		// 	lyricPrompt = lyricPrompt.concat(` of a song named ${songTitle}`);
-		// }
 		if (lyricPrompt === 'lyrics') {
 			lyricPrompt = 'lyrics on any subject in any style';
 		}
@@ -167,7 +164,7 @@
 			</div>
 
 			<a
-				href="/lyrics"
+				href="lyricgenerator.com/lyrics"
 				class="generate-lyrics"
 				on:click={() => {
 					generateLyrics();
@@ -506,26 +503,26 @@
 		border-radius: 1.5rem;
 		color: #0f172a;
 		cursor: pointer;
-		transform: translateY(0) scale(1);
+		/* transform: translateY(0) scale(1); */
 		text-decoration: none;
 	}
 	.generate-lyrics:hover:active {
-		transform: translateY(1px);
+		/* transform: translateY(1px); */
 		box-shadow: none;
 		background-color: #fb8200;
 	}
 	.generator-btn:hover {
-		transform: translateY(-1px);
+		/* transform: translateY(-1px); */
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 	}
 
 	.generator-btn:active {
-		transform: translateY(1px) scale(0.75);
+		/* transform: translateY(1px) scale(0.75); */
 		box-shadow: none;
 	}
 
 	.generate-lyrics:hover {
-		transform: translateY(-0.25rem) translateX(0.75rem) scale(1.1);
+		/* transform: translateY(-0.25rem) translateX(0.75rem) scale(1.1); */
 		background-color: #ffa64c;
 	}
 	.submit-feedback {
@@ -553,7 +550,6 @@
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 		border-radius: 1.5rem;
 		color: #e5e7eb;
-		cursor: pointer;
 		font-family: Arial, Helvetica, sans-serif;
 		font-size: small;
 		outline: none;
@@ -568,17 +564,19 @@
 
 	.range-slider {
 		cursor: pointer;
-		transform: translateX(0) scale(1);
+		/* transform: translateX(0) scale(1); */
 		background-color: #1f2937;
 		/* transition: transform 500ms ease-in-out 300ms, background-color 500ms ease-in-out; */
-	}
-	.range-slider:hover {
-		transform: translateX(0.25rem) scale(1.1);
-		background-color: #29364d;
 	}
 
 	.range-slider:focus {
 		outline: none;
+	}
+
+	/* Define the hover effect */
+	.range-slider:hover {
+		/* transform: translateX(0.25rem) scale(1.1); */
+		background-color: #fb8200;
 	}
 
 	.custom-input {
@@ -603,8 +601,7 @@
 	}
 
 	.custom-input:hover {
-		/* transform: translateY(-0.25rem) scale(1.1); */
-		transform: translateY(-0.25rem) translateX(0.75rem) scale(1.1);
+		/* transform: translateY(-0.25rem) translateX(0.75rem) scale(1.1); */
 		background-color: #29364d;
 	}
 </style>
