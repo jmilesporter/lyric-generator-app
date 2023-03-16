@@ -86,10 +86,10 @@
 </script>
 
 <head>
-	<title>{title}</title>
+	<title>Lyric Generator</title>
 </head>
 
-<header>
+<!-- <header>
 	<div class="header-container">
 		<div class="header-wrapper">
 			<h1 class="title">{title}</h1>
@@ -97,8 +97,7 @@
 			<div class="border-container" />
 		</div>
 	</div>
-</header>
-
+</header> -->
 <main>
 	<div class="container">
 		<section>
@@ -112,7 +111,7 @@
 		</section>
 
 		<section>
-			<h2 class="subsubtitle">How it Works</h2>
+			<h2 class="subsubtitle">How It Works</h2>
 
 			<ol>
 				<li>Choose a genre that has lyrics, like 60's pop or psychedelic folk.</li>
@@ -167,14 +166,15 @@
 				</div>
 			</div>
 
-			<button
+			<a
+				href="http://localhost:5173/lyrics"
 				class="generate-lyrics"
 				on:click={() => {
 					generateLyrics();
 				}}
 			>
 				g e n e r a t e &nbsp; l y r i c s
-			</button>
+			</a>
 			<div class="predictability-container">
 				<div>p r e d i c t a b i l i t y</div>
 				<label>
@@ -254,10 +254,10 @@
 			</div>
 		</section>
 	</div>
-	<div><span>{$lyrics}</span></div>
+	<!-- <div><span>{$lyrics}</span></div> -->
 </main>
 
-<footer>
+<!-- <footer>
 	<a
 		href="https://docs.google.com/forms/d/e/1FAIpQLSdMJ0woyXr-PSIVSFEBsI9Vk5ofXol2F4JXR6mbUL2VHYBvkQ/viewform"
 		class="submit-feedback"
@@ -267,8 +267,7 @@
 	<p>
 		l y r i c &nbsp; g e n e r a t o r &nbsp; 2 0 2 3 &nbsp; - &nbsp; v e r s i o n &nbsp; 0 . 1 . 0
 	</p>
-</footer>
-
+</footer> -->
 <style>
 	main {
 		display: flex;
@@ -508,6 +507,12 @@
 		color: #0f172a;
 		cursor: pointer;
 		transform: translateY(0) scale(1);
+		text-decoration: none;
+	}
+	.generate-lyrics:hover:active {
+		transform: translateY(1px);
+		box-shadow: none;
+		background-color: #fb8200;
 	}
 	.generator-btn:hover {
 		transform: translateY(-1px);
@@ -515,7 +520,7 @@
 	}
 
 	.generator-btn:active {
-		transform: translateY(1px);
+		transform: translateY(1px) scale(0.75);
 		box-shadow: none;
 	}
 
@@ -551,6 +556,7 @@
 		cursor: pointer;
 		font-family: Arial, Helvetica, sans-serif;
 		font-size: small;
+		outline: none;
 	}
 	.predictability-container::placeholder {
 		color: #e5e7eb;
@@ -568,6 +574,10 @@
 	.range-slider:hover {
 		transform: translateX(0.25rem) scale(1.1);
 		background-color: #29364d;
+	}
+
+	.range-slider:focus {
+		outline: none;
 	}
 
 	.custom-input {

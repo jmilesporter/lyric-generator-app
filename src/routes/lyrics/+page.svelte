@@ -2,16 +2,16 @@
 	import { lyrics } from '../../stores/OverlayStore.js';
 </script>
 
-<span>this is working</span>
-<span class="lyrics">{lyrics}</span>
+<section>
+	<span class="lyrics">{$lyrics} </span>
+</section>
 
 <style>
 	.lyrics {
-		font-size: 1.5rem;
-		line-height: 1.5;
-		font-family: 'Roboto', sans-serif;
 		white-space: pre-wrap;
-		color: white;
+		line-height: 1.5rem;
+		font-family: 'Courier New', Courier, monospace;
+		color: #e5e7eb;
 		height: 100%;
 		width: 100%;
 	}
