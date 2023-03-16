@@ -1,5 +1,13 @@
 <script>
+	import { onMount } from 'svelte';
+	import { navigate } from 'svelte-routing';
 	import { lyrics, loading } from '../../stores/OverlayStore.js';
+
+	onMount(() => {
+		if (!$lyrics) {
+			navigate('/');
+		}
+	});
 </script>
 
 <section class="container">

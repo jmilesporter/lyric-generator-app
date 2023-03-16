@@ -16,7 +16,7 @@
 <header>
 	<div class="header-container">
 		<div class="header-wrapper">
-			<h1 class="title">Lyric Generator</h1>
+			<a href="/"> <h1 class="title">Lyric Generator</h1> </a>
 			<p class="subtitle">Lyrics generated with AI</p>
 			<div class="border-container" />
 		</div>
@@ -126,5 +126,15 @@
 		align-items: center;
 		height: 100%;
 		width: 100%;
+	}
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	a:hover,
+	a:focus {
+		text-decoration: none;
+		color: inherit;
 	}
 </style>
