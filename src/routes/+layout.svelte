@@ -1,18 +1,6 @@
 <script>
-	// import '../app.css';
 </script>
 
-<!-- <head
-	><script src="https://kit.fontawesome.com/21639931c9.js" crossorigin="anonymous"></script></head
-> -->
-
-<!-- {#if $isOverlayOpen}
-	<div>
-		<Overlay>
-			<div />
-		</Overlay>
-	</div>
-{/if} -->
 <header>
 	<div class="header-container">
 		<div class="header-wrapper">
@@ -44,6 +32,28 @@
 </footer>
 
 <style>
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0;
+		padding-bottom: 2rem;
+		max-width: 800px;
+		margin: 0 auto;
+		background-color: #334155;
+		min-height: 1000px;
+	}
+
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+	}
 	.header-container {
 		display: flex;
 		flex-direction: column;
@@ -106,12 +116,6 @@
 		margin-bottom: 1rem;
 		border-radius: 1.5rem;
 	}
-	.submit-feedback::placeholder {
-		color: #fff;
-	}
-	.submit-feedback:focus::placeholder {
-		color: transparent;
-	}
 
 	footer {
 		text-align: center;
@@ -124,28 +128,7 @@
 		margin: 0 auto;
 		background-color: #334155;
 	}
-	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		padding-left: 1rem;
-		padding-right: 1rem;
-		padding-top: 0;
-		padding-bottom: 2rem;
-		max-width: 800px;
-		margin: 0 auto;
-		background-color: #334155;
-		min-height: 1000px;
-	}
 
-	.container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		width: 100%;
-	}
 	a {
 		text-decoration: none;
 		color: inherit;

@@ -1,11 +1,12 @@
 <!-- App.svelte -->
 <script>
-	import { lyrics, loading } from '../stores/OverlayStore.js';
+	import { lyrics, loading } from '../stores/Store.js';
 
 	export let data;
 	const apiKey = data.key;
 	let rangeValue = 70;
 
+	// format the payload for the API
 	function formatPayload() {
 		if (genre) {
 			lyricPrompt = `${genre} `;
@@ -22,6 +23,7 @@
 		}
 	}
 
+	// prevent multiple clicks
 	let clicked = false;
 
 	function preventMultiClick() {
@@ -31,15 +33,13 @@
 		setTimeout(() => {
 			clicked = false;
 		}, 3000);
-
-		// console.log('click');
 	}
 
+	// generate lyrics
 	async function generateLyrics() {
 		preventMultiClick();
 
 		$lyrics = '';
-		// isOverlayOpen.set(true);
 		formatPayload();
 		try {
 			$loading = true;
@@ -67,7 +67,7 @@
 				throw data.error || new Error(`Request failed with status ${response.status}`);
 			}
 		} catch (error) {
-			// Consider implementing your own error handling logic here
+			// implement error handling logic here
 			console.error(error);
 			// alert(error.message);
 		}
@@ -76,29 +76,18 @@
 	$: subject = '';
 	$: genre = '';
 	$: artist = '';
-	// $: songTitle = '';
 	$: lyricPrompt = '';
-
-	export let title = 'Lyric Generator';
 </script>
 
 <head>
 	<title>Lyric Generator</title>
 </head>
 
-<!-- <header>
-	<div class="header-container">
-		<div class="header-wrapper">
-			<h1 class="title">{title}</h1>
-			<p class="subtitle">Lyrics generated with AI</p>
-			<div class="border-container" />
-		</div>
-	</div>
-</header> -->
 <main>
 	<div class="container">
+		<!-- preamble section -->
 		<section>
-			<h2 class="subtitle">
+			<h2 class="highlighted-header">
 				Do you struggle with writing lyrics for your songs? Look no further than Lyric Generator!
 			</h2>
 			<p>
@@ -106,9 +95,9 @@
 				Simply input a few keywords, and our software will do the rest.
 			</p>
 		</section>
-
+		<!-- how it works sections -->
 		<section>
-			<h2 class="subsubtitle">How It Works</h2>
+			<h2 class="section-title">How It Works</h2>
 
 			<ol>
 				<li>Choose a genre that has lyrics, like 60's pop or psychedelic folk.</li>
@@ -122,8 +111,8 @@
 				<li>Enjoy your new lyrics!</li>
 			</ol>
 		</section>
-
-		<div class="wrapper">
+		<!-- generate lyrics interface -->
+		<div class="interface-wrapper">
 			<div class="input-wrapper-left">
 				<label for="genre-input">g e n r e</label>
 				<div class="input-container">
@@ -179,13 +168,13 @@
 				</label>
 			</div>
 		</div>
-
+		<!-- ad slot -->
 		<div class="ads">
 			<!-- ad code here -->
 		</div>
-
+		<!-- benefits section -->
 		<section>
-			<h2 class="subsubtitle">Benefits of Using Lyric Generator</h2>
+			<h2 class="section-title">Benefits of Using Lyric Generator</h2>
 			<ul>
 				<li>
 					<h3>Save time and effort</h3>
@@ -211,9 +200,13 @@
 				</li>
 			</ul>
 		</section>
+		<!-- ad slot -->
+		<div class="ads">
+			<!-- ad code here -->
+		</div>
+		<!-- testimonials section -->
 		<section>
-			<h2 class="subsubtitle">What Our Users Are Saying</h2>
-			<!-- <div class="border-container" /> -->
+			<h2 class="section-title">What Our Users Are Saying</h2>
 			<div class="testimonial-container">
 				<div class="testimonial-wrapper">
 					<div class="testimonial">
@@ -251,21 +244,10 @@
 			</div>
 		</section>
 	</div>
-	<!-- <div><span>{$lyrics}</span></div> -->
 </main>
 
-<!-- <footer>
-	<a
-		href="https://docs.google.com/forms/d/e/1FAIpQLSdMJ0woyXr-PSIVSFEBsI9Vk5ofXol2F4JXR6mbUL2VHYBvkQ/viewform"
-		class="submit-feedback"
-	>
-		s u b m i t &nbsp; f e e d b a c k
-	</a>
-	<p>
-		l y r i c &nbsp; g e n e r a t o r &nbsp; 2 0 2 3 &nbsp; - &nbsp; v e r s i o n &nbsp; 0 . 1 . 0
-	</p>
-</footer> -->
 <style>
+	/* main content area */
 	main {
 		display: flex;
 		flex-direction: column;
@@ -276,72 +258,8 @@
 		margin: 0 auto;
 		background-color: #334155;
 	}
-	ol {
-		/* list-style-position: inside; */
-		list-style-type: none; /* remove the default numbering */
-		padding-left: 1em; /* add some left padding for the list items */
-	}
-	ul {
-		list-style-position: inside;
-	}
-	li {
-		text-align: center;
-		margin-bottom: 0.5em; /* add some space between list items */
-	}
-	.wrapper {
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: flex-start;
-		margin: 1rem;
-		padding: 1rem;
-		border: 1px solid #ccc;
-		border-radius: 1.5rem;
-		max-width: 800px;
-		height: 400px;
-	}
-
-	.ads {
-		display: flex;
-		justify-content: space-between;
-		margin: 1rem 0;
-	}
-
-	.header-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 1rem;
-		max-width: 800px;
-		margin: 0 auto;
-		background-color: #334155;
-	}
-
-	.border-container {
-		max-width: 730px;
-		width: 750px;
-		border-bottom: 1px solid #ccc;
-		bottom: 0%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin: 0 auto;
-		background-color: #334155;
-	}
-
-	.header-wrapper {
-		text-align: center;
-		/* padding-bottom: 1rem; */
-		margin-bottom: 1rem;
-	}
-
-	.title {
-		font-size: 4rem;
-		font-family: Arial, sans-serif;
-		margin: 0;
-	}
-
-	.subtitle {
+	/* grey text at the top of the root page */
+	.highlighted-header {
 		font-size: 1.5rem;
 		margin: 0;
 		margin-bottom: 1.5rem;
@@ -349,29 +267,28 @@
 		text-align: center;
 		color: #9ca3af;
 	}
-
-	.subsubtitle {
+	/* H2 tags */
+	.section-title {
 		font-size: 2rem;
 		margin: 1rem 0 0.5rem;
 		font-weight: bold;
 		text-align: center;
 	}
-	.sub-section-title {
+	/* how it works section */
+	ol {
+		list-style-type: none; /* remove the default numbering */
+		padding-left: 1em; /* add some left padding for the list items */
+	}
+	/* benefits of using lyric generator section */
+	ul {
+		list-style-position: inside;
+	}
+	li {
 		text-align: center;
-		font-weight: bold;
+		margin-bottom: 0.5em; /* add some space between list items */
 	}
 
-	footer {
-		text-align: center;
-		margin-top: 2rem;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 1rem;
-		max-width: 800px;
-		margin: 0 auto;
-		background-color: #334155;
-	}
+	/* testimoniala */
 	.testimonial-container {
 		display: flex;
 		justify-content: center;
@@ -403,6 +320,20 @@
 		font-weight: bold;
 		margin-top: 0.5rem;
 		margin-bottom: 0;
+	}
+
+	/* generate lyrics section */
+	.interface-wrapper {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin: 1rem;
+		padding: 1rem;
+		border: 1px solid #ccc;
+		border-radius: 1.5rem;
+		max-width: 800px;
+		height: 400px;
 	}
 	/* Input styling */
 	.input-wrapper-center {
@@ -455,7 +386,6 @@
 	}
 
 	input:focus {
-		/* border-color: #e5e7eb; */
 		outline: 1px solid #e5e7eb;
 	}
 
@@ -467,34 +397,37 @@
 	label {
 		margin-bottom: 0.5rem;
 	}
+	.custom-input {
+		background-color: #1f2937;
+		margin-top: 1rem;
+		padding: 0.5rem;
+		width: 100%;
+		border: none;
+		border-radius: 1.5rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		color: #e5e7eb;
+		outline: none;
+		/* transition: transform 500ms ease-in-out 300ms, background-color 500ms ease-in-out; */
+	}
 
-	.input-icon {
-		position: absolute;
-		right: 0.5rem;
-		top: 50%;
-		transform: translateY(-50%);
+	.custom-input::placeholder {
 		color: #e5e7eb;
 	}
 
-	.input-icon i {
-		font-size: 1rem;
+	.custom-input:focus::placeholder {
+		color: transparent;
 	}
 
-	.input-icon:hover {
-		color: #e5e7eb;
+	.custom-input:hover {
+		/* transform: translateY(-0.25rem) translateX(0.75rem) scale(1.1); */
+		background-color: #29364d;
 	}
-
-	/* Button styling */
-	.generator-btn {
-		box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-	}
-
 	.generate-lyrics {
 		display: inline-block;
+		position: absolute;
 		border: none;
 		background-color: #fb8200;
 		padding: 2rem;
-		position: absolute;
 		top: 40%;
 		width: 16rem;
 		max-width: 18rem;
@@ -512,33 +445,10 @@
 		box-shadow: none;
 		background-color: #fb8200;
 	}
-	.generator-btn:hover {
-		/* transform: translateY(-1px); */
-		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-	}
-
-	.generator-btn:active {
-		/* transform: translateY(1px) scale(0.75); */
-		box-shadow: none;
-	}
 
 	.generate-lyrics:hover {
 		transform: translateY(-0.25rem) scale(1.1);
 		background-color: #ffa64c;
-	}
-	.submit-feedback {
-		text-decoration: none;
-		bottom: 3rem;
-		color: #fff;
-		text-align: center;
-		margin-bottom: 1rem;
-		border-radius: 1.5rem;
-	}
-	.submit-feedback::placeholder {
-		color: #fff;
-	}
-	.submit-feedback:focus::placeholder {
-		color: transparent;
 	}
 
 	.predictability-container {
@@ -581,29 +491,9 @@
 		background-color: #fb8200;
 	}
 
-	.custom-input {
-		background-color: #1f2937;
-		margin-top: 1rem;
-		padding: 0.5rem;
-		width: 100%;
-		border: none;
-		border-radius: 1.5rem;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		color: #e5e7eb;
-		outline: none;
-		/* transition: transform 500ms ease-in-out 300ms, background-color 500ms ease-in-out; */
-	}
-
-	.custom-input::placeholder {
-		color: #e5e7eb;
-	}
-
-	.custom-input:focus::placeholder {
-		color: transparent;
-	}
-
-	.custom-input:hover {
-		/* transform: translateY(-0.25rem) translateX(0.75rem) scale(1.1); */
-		background-color: #29364d;
-	}
+	/* .ads {
+		display: flex;
+		justify-content: space-between;
+		margin: 1rem 0;
+	} */
 </style>
